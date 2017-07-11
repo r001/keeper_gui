@@ -1,0 +1,45 @@
+<html>
+    <head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+
+        <title>{{ title }} </title>
+    </head>
+
+
+    <body>
+        <h1>{{ title }} </h1>
+    	{% block content %}
+    	{% endblock %}
+        <div id="logwindow">
+        </div>
+    </body>
+
+    <script>
+		function updateLog(xhr){
+				var logLines = xhr.responseText.split( /\r?\n/ );
+				var lastLine = logLines[0];
+				lastIdCheck = lastLine.replace( /^(.*?) .*/, "$1" );
+				if(lastIdCheck != ""){ lastId = lastIdCheck; }
+				var log_no_hash = logLines.reverse().join('\n').replace( /^.*? /mg, "" );
+				log_no_hash = log_no_hash.replace(/<br\/>\s*.*? /mg,"<br/>");
+				document.getElementById("logwindow").innerHTML += log_no_hash;
+		}
+        var xhr = new XMLHttpRequest();
+		var lastId=""
+        xhr.addEventListener("load", onLoad);
+		xhr.open('GET', '{{ url_for('stream') }}'+"?last_id=");
+        xhr.send();
+        function onLoad(evt){
+				updateLog(xhr);
+				setInterval(function() {
+						var xhr = new XMLHttpRequest();
+						xhr.addEventListener("load", onLoadNew);
+						xhr.open('GET', '{{ url_for('stream') }}'+"?last_id="+lastId);
+						xhr.send();
+						function onLoadNew(evt){
+							updateLog(xhr);
+						}
+				}, 1000);
+        };
+    </script>
+</html>
