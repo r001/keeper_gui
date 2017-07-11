@@ -1,24 +1,11 @@
-<html>
-	<head>
-		<title>{{ title }} </title>
-	</head>
+{% extends "window.html" %}
 
-
-	<body>
-		<div id="logwindow">
-		</div>
-	</body>
-
-
-	<script>
-		setInterval(function() {
-			var xhr = new XMLHttpRequest();
-			xhr.open('GET', '{{ url_for('stream') }}');
-			xhr.send();
-			xhr.addEventListener("load",onLoad)
-			function onLoad() {
-				document.getElementById("logwindow").innerHTML = xhr.responseText;
-			}
-		}, 1000);
-	</script>
-</html>
+{% block content %}
+<h2>Monitor keeper - {{ keeper }}</h2>
+  <form action="login" method="post" name="login">
+      {{ form.hidden_tag() }}
+      <p>
+      Keeper to watch: {{ form.keeper(**{"onchange":"this.form.submit()"}) }}<br>
+      </p>
+  </form>
+{% endblock %}
