@@ -1,0 +1,7 @@
+#logwindow {
+		overflow:auto;
+		height: 70%;
+		width: 80%;
+		background: #abf0ce;
+		font-family: "Courier New", Times, serif;
+	   }
