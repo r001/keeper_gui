@@ -6,3 +6,4 @@ python3.6 -m venv flask
 flask/bin/pip install --upgrade pip	
 flask/bin/pip install flask
 flask/bin/pip install flask-wtf
+#flask/bin/pip install flipflop

@@ -46,7 +46,8 @@ def index():
 def stream():
     last_id=request.args['last_id'];
     def inner(last_id):
-        reverse_lines = reverse_readline("/home/dev/maker/keeper_gui/sai_arbitrage.log")
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        reverse_lines = reverse_readline(dir_path+"/../sai_arbitrage.log")
         start=False
         for pos, line in enumerate(reverse_lines):
             if last_id != "" and line.startswith(last_id):
