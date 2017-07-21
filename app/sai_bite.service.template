@@ -1,0 +1,11 @@
+[Unit]
+Description=sai bite service
+
+[Service]
+Environment= PYTHONPATH=__pythonpath__
+WorkingDirectory=__working_directory__/keeper
+ExecStart=/usr/bin/python3.6 __working_directory__/app/rundaemon.py sai_bite
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

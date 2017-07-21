@@ -12,4 +12,5 @@ class LoginForm(FlaskForm):
     minimum_profit = DecimalField('minimum_profit', default=".01", description="Minimum profit in SAI from one arbitrage operation")
     maximum_engagement = DecimalField('maximum_engagement', default=1000, description="Maximum engagement in SAI in one arbitrage operation")
     tx_manager = StringField('tx_manager', validators=[Regexp("^0x[0-9a-zA-Z]{40}")], description="Address of the TxManager to use for multi-step arbitrage") 
-    keeper = SelectField('keeper', choices=[("sai_ar", app.config['SAI_AR']),("dai_bb",app.config['DAI_BB']),("sai_bi", app.config['SAI_BI']),("sai_to", app.config['SAI_TO'])])
+    keeper = SelectField('keeper', choices=[("sai_ar",
+    app.config['SAI_AR']),("sai_bi", app.config['SAI_BI'])])
