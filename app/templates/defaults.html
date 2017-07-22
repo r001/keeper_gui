@@ -3,7 +3,7 @@
   <form action="keeper" method="post" name="login">
       {{ keeper_form.hidden_tag() }}
       <p>
-      Keeper to watch: {{ keeper_form.keeper(**{"onchange":"this.form.submit()"}) }}<br>
+      {{keeper_form.keeper.label}} {{ keeper_form.keeper(**{"onchange":"this.form.submit()"}) }}<br>
       </p>
   </form>
 {% endblock %}
@@ -15,31 +15,31 @@
                     <thead></thead>
                     <tbody>
                      <tr>
-                     <td>{{ sai_arbitrage_form.eth_from.label }}</td>  <td>{{ sai_arbitrage_form.eth_from(size=50 ) }}</td>
+                     <td>{{ sai_arbitrage_form.eth_from.label }}</td>  <td>{{ sai_arbitrage_form.eth_from(size=50, value=config['sai_arbitrage']['eth-from']) }}</td>
                      </tr>
 					  {% for error in sai_arbitrage_form.eth_from.errors %}
 						 <tr style="color: red;"><td></td><td>{{error}}</td></tr>
 					  {% endfor %}
                      <tr>
-                     <td>{{ sai_arbitrage_form.base_token.label }}</td>  <td>{{ sai_arbitrage_form.base_token(size=5) }}</td>
+                     <td>{{ sai_arbitrage_form.base_token.label }}</td>  <td>{{ sai_arbitrage_form.base_token(size=5, value=config['sai_arbitrage']['base-token']) }}</td>
                      </tr>
 					  {% for error in sai_arbitrage_form.base_token.errors %}
 						 <tr style="color: red;"><td></td><td>{{error}}</td></tr>
 					  {% endfor %}
                       <tr>
-                      <td>{{ sai_arbitrage_form.minimum_profit.label }}</td> <td>{{ sai_arbitrage_form.minimum_profit }}</td>
+                      <td>{{ sai_arbitrage_form.minimum_profit.label }}</td> <td>{{ sai_arbitrage_form.minimum_profit(value=config['sai_arbitrage']['min-profit']) }}</td>
                       </tr>
 					  {% for error in sai_arbitrage_form.minimum_profit.errors %}
 						 <tr style="color: red;"><td></td><td>{{error}}</td></tr>
 					  {% endfor %}
                       <tr>
-                      <td>{{ sai_arbitrage_form.maximum_engagement.label }}</td> <td>{{ sai_arbitrage_form.maximum_engagement(size=5) }}</td>
+                      <td>{{ sai_arbitrage_form.maximum_engagement.label }}</td> <td>{{ sai_arbitrage_form.maximum_engagement(size=5, value=config['sai_arbitrage']['max-engagement']) }}</td>
                       </tr>
 					  {% for error in sai_arbitrage_form.maximum_engagement.errors %}
 						 <tr style="color: red;"><td></td><td>{{error}}</td></tr>
 					  {% endfor %}
                       <tr>
-                      <td>{{ sai_arbitrage_form.max_errors.label }}</td> <td>{{ sai_arbitrage_form.max_errors(size=5) }}</td>
+                      <td>{{ sai_arbitrage_form.max_errors.label }}</td> <td>{{ sai_arbitrage_form.max_errors(size=5, value=config['sai_arbitrage']['max-errors']) }}</td>
                       </tr>
 					  {% for error in sai_arbitrage_form.max_errors.errors %}
 						 <tr style="color: red;"><td></td><td>{{error}}</td></tr>
@@ -51,19 +51,19 @@
 						<tr style="color: red;"><td></td><td>{{config['sai_arbitrage']['auth_error']}}</td></tr>
 						{% endif%}
                       <tr>
-                      <td>{{ sai_arbitrage_form.tx_manager.label }}</td> <td>{{ sai_arbitrage_form.tx_manager(size=50) }}</td>
+                      <td>{{ sai_arbitrage_form.tx_manager.label }}</td> <td>{{ sai_arbitrage_form.tx_manager(size=50, value=config['sai_arbitrage']['tx-manager']) }}</td>
                       </tr>
 					  {% for error in sai_arbitrage_form.tx_manager.errors %}
 						 <tr style="color: red;"><td></td><td>{{error}}</td></tr>
 					  {% endfor %}
 					  <tr>
-					  <td>{{ sai_arbitrage_form.rpc_host.label }}</td> <td>{{ sai_arbitrage_form.rpc_host(size=50) }}</td>
+					  <td>{{ sai_arbitrage_form.rpc_host.label }}</td> <td>{{ sai_arbitrage_form.rpc_host(size=50, value=config['sai_arbitrage']['rpc-host']) }}</td>
 					  </tr>
 					  {% for error in sai_arbitrage_form.rpc_host.errors %}
 						 <tr style="color: red;"><td></td><td>{{error}}</td></tr>
 					  {% endfor %}
 					  <tr>
-					  <td>{{ sai_arbitrage_form.rpc_port.label }}</td> <td>{{ sai_arbitrage_form.rpc_port(size=5) }}</td>
+					  <td>{{ sai_arbitrage_form.rpc_port.label }}</td> <td>{{ sai_arbitrage_form.rpc_port(size=5, value=config['sai_arbitrage']['rpc-port']) }}</td>
 					  </tr>
 					  {% for error in sai_arbitrage_form.rpc_port.errors %}
 						 <tr style="color: red;"><td></td><td>{{error}}</td></tr>
@@ -97,13 +97,13 @@
               <p>
               <table>
               <tr>
-              <td>{{ sai_bite_form.eth_from.label }}</td> <td>{{ sai_bite_form.eth_from(size=50) }}</td>
+              <td>{{ sai_bite_form.eth_from.label }}</td> <td>{{ sai_bite_form.eth_from(size=50, value=config['sai_bite']['eth-from']) }}</td>
               </tr>
 			  {% for error in sai_bite_form.eth_from.errors %}
 			     <tr style="color: red;"><td></td><td>{{error}}</td></tr>
         	  {% endfor %}
               <tr>
-              <td>{{ sai_bite_form.frequency.label }}</td> <td>{{ sai_bite_form.frequency(size=5) }}</td>
+              <td>{{ sai_bite_form.frequency.label }}</td> <td>{{ sai_bite_form.frequency(size=5, value=config['sai_bite']['frequency']) }}</td>
               </tr>
 			  {% for error in sai_bite_form.frequency.errors %}
 			     <tr style="color: red;"><td></td><td>{{error}}</td></tr>
@@ -115,13 +115,13 @@
 				<tr style="color: red;"><td></td><td>{{config['sai_bite']['auth_error']}}</td></tr>
 				{% endif%}
               <tr>
-              <td>{{ sai_bite_form.rpc_host.label }}</td> <td>{{ sai_bite_form.rpc_host(size=50) }}</td>
+              <td>{{ sai_bite_form.rpc_host.label }}</td> <td>{{ sai_bite_form.rpc_host(size=50, value=config['sai_bite']['rpc-host']) }}</td>
               </tr>
 			  {% for error in sai_bite_form.rpc_host.errors %}
 			     <tr style="color: red;"><td></td><td>{{error}}</td></tr>
         	  {% endfor %}
               <tr>
-              <td>{{ sai_bite_form.rpc_port.label }}</td> <td>{{ sai_bite_form.rpc_port(size=5) }}</td>
+              <td>{{ sai_bite_form.rpc_port.label }}</td> <td>{{ sai_bite_form.rpc_port(size=5, value=config['sai_bite']['rpc-port']) }}</td>
               </tr>
 			  {% for error in sai_bite_form.rpc_port.errors %}
 			     <tr style="color: red;"><td></td><td>{{error}}</td></tr>

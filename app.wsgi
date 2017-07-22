@@ -1,4 +1,4 @@
-#!flask/bin/pythonasss
+#!flask/bin/python3.6
 import os 
 import sys
 import logging

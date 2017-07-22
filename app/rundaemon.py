@@ -1,4 +1,5 @@
-#!/usr/bin/env python3.6
+#!/bin/sh
+''''exec python3.6 -u -- "$0" ${1+"$@"} # '''
 import fileinput
 from ethereum.utils import check_checksum, sha3, encode_hex
 import re
@@ -38,7 +39,7 @@ class RunDaemon:
             [   
                 [ "--"+k, config[self.run_script][k] ] 
                 for k in config[self.run_script] 
-                if config[self.run_script][k] != ''
+                if config[self.run_script][k] != '' and config[self.run_script][k] != 'None'
             ] 
             for item in sublist
         ]

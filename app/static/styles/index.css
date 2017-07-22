@@ -1,7 +1,13 @@
 #logwindow {
-		overflow:auto;
-		height: 70%;
-		width: 80%;
-		background: #abf0ce;
-		font-family: "Courier New", Times, serif;
-	   }
+                overflow:auto;
+                height: 50%;
+                width: 80%;
+                background: #abf0ce;
+                font-family: "Courier New", Times, serif;
+	       }
+table {
+                table-layout: auto;
+      }
+label {
+                font-weight: bold;
+      }
