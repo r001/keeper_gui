@@ -1,4 +1,21 @@
-t submodule update --init --recursive
+#
+# This file is part of Maker Keeper Framework.
+#
+# Copyright (C) 2017 r001
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+git submodule update --init --recursive
 sudo apt-get install python3.6 gcc python3.6-dev python3.6-venv python3-pip python3-daemon
 python3.6 -m pip install --upgrade pip
 python3.6 -m pip install --upgrade venv
