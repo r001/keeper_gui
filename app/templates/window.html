@@ -27,8 +27,10 @@
 		    var log_no_hash = logLines.reverse().join('\n').replace( /^.*? /mg, "" );
 		    //log_no_hash = log_no_hash.replace(/<br\/>\s*.*? /mg,"<br/>");
 		    document.getElementById("logwindow").innerHTML += log_no_hash;
-			var elem = document.getElementById('logwindow');
-			elem.scrollTop = elem.scrollHeight;
+			if(log_no_hash != ""){
+			    var elem = document.getElementById('logwindow');
+			    elem.scrollTop = elem.scrollHeight;
+			}
 	    }
 
 	    function onLoad(evt){
@@ -45,6 +47,7 @@
 	    };
             var names={dai_bb:"{{config['flask']['DAI_BB']}}", sai_ar:"{{config['flask']['SAI_AR']}}", sai_bi:"{{config['flask']['SAI_BI']}}", sai_to:"{{config['flask']['SAI_TO']}}"};
 	    document.getElementById("keeper_name").innerHTML=names.{{keeper}};
+	    document.getElementById('keeper').value = '{{keeper}}'
 	    var xhr = new XMLHttpRequest();
 	    var lastId=""
 	    xhr.addEventListener("load", onLoad);

@@ -104,17 +104,19 @@ def processBiteAndArbitrage(action, sai_arbitrage_form, sai_bite_form, form):
             if action == "sai_arbitrage":
                 config['sai_arbitrage']['eth-from']      =     curr_form.eth_from.data
                 config['sai_arbitrage']['base-token']    =     curr_form.base_token.data
-                config['sai_arbitrage']['min-profit']    = str(curr_form.minimum_profit.data) if str(curr_form.minimum_profit.data) != "None" else ""
-                config['sai_arbitrage']['max-engagement']= str(curr_form.maximum_engagement.data) if str(curr_form.maximum_engagement.data) != "None" else "" 
+                config['sai_arbitrage']['min-profit']    = str(curr_form.minimum_profit.data) \
+                                                           if str(curr_form.minimum_profit.data) != "None" else ""
+                config['sai_arbitrage']['max-engagement']= str(curr_form.maximum_engagement.data)\
+                                                           if str(curr_form.maximum_engagement.data) != "None" else "" 
                 config['sai_arbitrage']['tx-manager']    =     curr_form.tx_manager.data
                 config['sai_arbitrage']['max-errors']    = str(curr_form.max_errors.data) if str(curr_form.max_errors.data) != "None" else ""
                 config['sai_arbitrage']['rpc-host']      =     curr_form.rpc_host.data
                 config['sai_arbitrage']['rpc-port']      = str(curr_form.rpc_port.data) if str(curr_form.rpc_port.data) != "None" else ""
             elif action == "sai_bite":
-                config['sai_bite']['eth-from']      =     curr_form.eth_from.data
-                config['sai_bite']['rpc-host']      =     curr_form.rpc_host.data
-                config['sai_bite']['rpc-port']      = str(curr_form.rpc_port.data) if str(curr_form.rpc_port.data) != "None" else ""
-                config['sai_bite']['frequency']     = str(curr_form.frequency.data) if str(curr_form.frequency.data) != "None" else ""
+                config['sai_bite']['eth-from']           =     curr_form.eth_from.data
+                config['sai_bite']['rpc-host']           =     curr_form.rpc_host.data
+                config['sai_bite']['rpc-port']           = str(curr_form.rpc_port.data) if str(curr_form.rpc_port.data) != "None" else ""
+                config['sai_bite']['frequency']          = str(curr_form.frequency.data) if str(curr_form.frequency.data) != "None" else ""
             with open(dir_path + '/../keepers.conf', 'w') as configfile:
                 config.write(configfile)
             if curr_form.server_cmd.data != "nothing":
